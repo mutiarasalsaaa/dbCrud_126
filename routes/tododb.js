@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database/db'); // Mengimpor koneksi database
+const db = require('../database/db.js'); // Mengimpor koneksi database
 
 // Endpoint untuk mendapatkan semua tugas
 router.get('/', (req, res) => {

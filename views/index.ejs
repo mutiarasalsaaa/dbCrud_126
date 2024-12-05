@@ -1,5 +1,121 @@
-<div class="container">
-    <h1>Welcome to the Home Page!</h1>
-    <p>This is the home page of our application.</p>
-    <a href="/contact" class="btn btn-primary">Go to Contact Page</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweetypie Salon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-section {
+            background-color: #ffcce0;
+            padding: 30px 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .header-section h1 {
+            color: #ff3399;
+        }
+
+        .header-section p {
+            color: #cc0066;
+        }
+
+        .btn-primary {
+            background-color: #ff3399;
+            border-color: #ff3399;
+        }
+
+        .btn-primary:hover {
+            background-color: #e60073;
+            border-color: #e60073;
+        }
+
+        footer {
+            background-color: #ffb3d9;
+            color: #ff0066;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .brand-logo {
+            width: 100px;
+            margin: 0 auto 15px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <img src="https://i.pinimg.com/736x/19/20/36/192036dccadcc12a268eadebf0591dbc.jpg" alt="Sweetypie Logo" class="brand-logo rounded-circle">
+            <h1>Sweetypie Salon</h1>
+            <p>Discover our premium beauty treatments for Nail Art, Eyelashes, and Hair Care.</p>
+        </div>
+
+        <!-- Services Section -->
+        <div class="row">
+            <!-- Nail Art Service -->
+            <div class="col-md-4 mb-4">
+                <div class="card service-card shadow-sm">
+                    <img src="https://i.pinimg.com/736x/67/51/fd/6751fd374af6b5ef0a16f2c0fe3ba62a.jpg" class="card-img-top" alt="Nail Art">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">Nail Art</h5>
+                        <p class="card-text">Get creative designs and high-quality nail art tailored to your style.</p>
+                        <a href="/nail-art" class="btn btn-primary">Booking now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eyelash Extensions Service -->
+            <div class="col-md-4 mb-4">
+                <div class="card service-card shadow-sm">
+                    <img src="https://i.pinimg.com/736x/cc/e6/8b/cce68b2c0b6cb647aba60db6e0d8d2a1.jpg" class="card-img-top" alt="Eyelash Extensions">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">Eyelash Extensions</h5>
+                        <p class="card-text">Enhance your natural beauty with our stunning eyelash extension services.</p>
+                        <a href="/eyelash" class="btn btn-primary">Booking now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hair Treatment Service -->
+            <div class="col-md-4 mb-4">
+                <div class="card service-card shadow-sm">
+                    <img src="https://i.pinimg.com/736x/89/75/56/897556cc9fe83f6adbb3cc10e82ab569.jpg" class="card-img-top" alt="Hair Treatment">
+                    <div class="card-body">
+                        <h5 class="card-title text-pink">Hair Treatment</h5>
+                        <p class="card-text">Rejuvenate and repair your hair with our professional hair treatments.</p>
+                        <a href="/hair-treatment" class="btn btn-primary"> Booking now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-3 mt-5">
+            <p>© 2024 Sweetypie. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

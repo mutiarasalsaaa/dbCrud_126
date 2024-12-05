@@ -1,4 +1,70 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    /* CSS untuk navbar */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8d0da; /* Warna latar belakang halaman pink muda */
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #e83e8c; /* Warna navbar pink */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .navbar-toggler {
+      border: none;
+    }
+
+    .navbar .navbar-brand {
+      font-weight: bold;
+      color: white; /* Warna teks navbar-brand */
+    }
+
+    .navbar .navbar-nav .nav-item {
+      padding-left: 20px;
+    }
+
+    .navbar .navbar-nav .nav-link {
+      color: white; /* Warna teks link */
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    .navbar .navbar-nav .nav-link:hover {
+      color: #ff80bf; /* Warna hover (lebih cerah) */
+    }
+
+    .navbar .navbar-nav .nav-link.active {
+      font-weight: bold;
+      color: #ff80bf; /* Warna aktif link */
+    }
+
+    .navbar .navbar-nav .btn-link {
+      color: white; /* Warna teks logout */
+      text-decoration: none;
+    }
+
+    /* Menambahkan margin top untuk menghindari navbar menutupi konten */
+    .content {
+      margin-top: 70px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +73,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
@@ -16,9 +82,21 @@
             <a class="nav-link" href="/todo-view">Todo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <form action="/logout" method="POST">
+              <button class="btn-link nav-link" type="submit">Logout</button>
+            </form>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Konten halaman -->
+  <div class="content">
+    <!-- Konten lainnya disini -->
+  </div>
+
+  <!-- Tambahkan Bootstrap JS jika perlu -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

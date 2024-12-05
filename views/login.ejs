@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk Akun</title>
+    <style>
+        /* Reset beberapa style default */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background keseluruhan */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec; /* Pink lembut sebagai latar belakang */
+            color: #333;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Styling untuk header */
+        h1 {
+            text-align: center;
+            color: #e91e63; /* Pink cerah untuk header */
+            margin-bottom: 20px;
+        }
+
+        /* Styling untuk logo */
+        .logo {
+            display: block;
+            width: 120px; /* Ukuran logo yang lebih kecil */
+            height: 120px; /* Membuat tinggi dan lebar sama agar berbentuk bulat */
+            margin: 0 auto 20px; /* Agar logo di tengah dan ada jarak bawah */
+            border-radius: 50%; /* Membuat logo berbentuk bulat */
+            object-fit: cover; /* Memastikan gambar tetap proporsional */
+        }
+
+        /* Styling untuk form login/signup */
+        .login-form {
+            background-color: #fff; /* Putih untuk latar belakang form */
+            border: 2px solid #e91e63; /* Bingkai merah muda di sekitar form */
+            border-radius: 10px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling untuk input */
+        .form-control {
+            border: 1px solid #e91e63; /* Border pink lembut */
+            border-radius: 5px;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Gaya untuk input saat fokus */
+        .form-control:focus {
+            border-color: #d81b60; /* Warna pink sedikit lebih gelap saat fokus */
+            box-shadow: 0 0 8px rgba(233, 30, 99, 0.6);
+        }
+
+        /* Gaya untuk tombol submit */
+        .btn {
+            background-color: #e91e63;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect untuk tombol */
+        .btn:hover {
+            background-color: #d81b60;
+        }
+
+        /* Gaya untuk link pendaftaran */
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        p a {
+            color: #e91e63;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            color: #c2185b;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="https://i.pinimg.com/736x/19/20/36/192036dccadcc12a268eadebf0591dbc.jpg" alt="Logo" class="logo">
+        <h1>Masuk Akun</h1>
+        <p>Silakan login untuk melanjutkan</p>
+        <form action="/login" method="POST" class="login-form">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password" required>
+            <button type="submit" class="btn">Masuk</button>
+        </form>
+        <p>Belum punya akun? <a href="/signup">Daftar di sini</a></p>
+    </div>
+</body>
+</html>

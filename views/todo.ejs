@@ -1,46 +1,47 @@
 <div class="container mt-5">
     <h1 class="text-center">Todo List</h1>
 
-    <!-- Form to Add New Todo -->
-    <form id="addTodoForm" class="my-4">
-        <div class="input-group">
-            <input type="text" id="newTask" class="form-control" placeholder="Add a new task..." required>
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">Add Task</button>
-            </div>
-        </div>
-    </form>
+    <!-- Button to Add New Todo -->
+    <button class="btn btn-primary my-4 d-block mx-auto" id="addTodoBtn">Add Todo</button>
 
-    <!-- List of Todos -->
-    <ul id="todoList" class="list-group">
-        <% todos.forEach(todo=> { %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="<%= todo.completed ? 'completed' : '' %>">
-                    <%= todo.task %>
-                </span>
-                <div>
-                    <button class="btn btn-sm btn-success mr-2 editBtn" data-id="<%= todo.id %>">Edit</button>
-                    <button class="btn btn-sm btn-danger deleteBtn" data-id="<%= todo.id %>">Delete</button>
+    <!-- Grid of Todos -->
+    <div id="todoList" class="row">
+        <% todos.forEach(todo => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card todo-card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Todo</h5>
+                        <p class="card-text"><%= todo.task %></p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-sm btn-success editBtn" data-id="<%= todo.id %>">Edit</button>
+                            <button class="btn btn-sm btn-danger deleteBtn" data-id="<%= todo.id %>">Delete</button>
+                        </div>
+                    </div>
                 </div>
-            </li>
-            <% }); %>
-    </ul>
+            </div>
+        <% }); %>
+    </div>
 
-    <!-- Edit Todo Modal -->
-    <div id="editModal" class="modal fade" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <!-- Footer -->
+    <footer class="text-center py-3 mt-5">
+        © Copyright 2024 muti.
+    </footer>
+
+    <!-- Add/Edit Todo Modal -->
+    <div id="todoModal" class="modal fade" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Todo</h5>
+                    <h5 class="modal-title" id="todoModalLabel">Add/Edit Todo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editTodoForm">
+                    <form id="todoForm">
                         <div class="form-group">
-                            <label for="editTask">Task</label>
-                            <input type="text" id="editTask" class="form-control" required>
+                            <label for="todoTask">Task</label>
+                            <input type="text" id="todoTask" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                        <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form>
                 </div>
             </div>
@@ -48,65 +49,78 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Add new todo
-        $('#addTodoForm').on('submit', function (e) {
-            e.preventDefault();
-            const task = $('#newTask').val().trim();
-            if (task) {
-                $.ajax({
-                    url: '/todos',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ task: task }),
-                    success: function (newTodo) {
-                        location.reload(); // Reload to show the new todo
-                    },
-                    error: function (error) {
-                        console.error("Error adding task:", error.responseText);
-                    }
-                });
-            }
-        });
+<style>
+    /* General styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffe6f2; /* Latar belakang pink lembut */
+    }
 
-        // Delete a todo
-        $('.deleteBtn').on('click', function () {
-            const id = $(this).data('id');
-            $.ajax({
-                url: '/todos/' + id,
-                type: 'DELETE',
-                success: function () {
-                    location.reload(); // Reload to show updated list
-                }
-            });
-        });
+    .todo-card {
+        border: 1px solid #ff80bf; /* Border warna pink terang */
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        // Show edit modal with the current task
-        let editId;
-        $('.editBtn').on('click', function () {
-            editId = $(this).data('id');
-            const currentTask = $(this).closest('li').find('span').text();
-            $('#editTask').val(currentTask);
-            $('#editModal').modal('show');
-        });
+    .todo-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(255, 128, 191, 0.2); /* Bayangan pink */
+    }
 
-        // Update todo on form submission
-        $('#editTodoForm').on('submit', function (e) {
-            e.preventDefault();
-            const task = $('#editTask').val().trim();
-            if (task) {
-                $.ajax({
-                    url: '/todos/' + editId,
-                    type: 'PUT',
-                    data: JSON.stringify({ task: task, completed: false }),
-                    contentType: 'application/json',
-                    success: function () {
-                        location.reload(); // Reload to show the updated todo
-                    }
-                });
-            }
-        });
-    });
-</script>
+    #addTodoBtn {
+        background-color: #ff4da6; /* Tombol tambah pink */
+        border-color: #ff4da6;
+        color: white;
+    }
+
+    #addTodoBtn:hover {
+        background-color: #e63995; /* Hover tombol tambah */
+        border-color: #e63995;
+    }
+
+    .btn-success {
+        background-color: #ff80bf; /* Tombol hijau diganti pink muda */
+        border-color: #ff80bf;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background-color: #ff66b2; /* Hover tombol hijau diganti pink yang lebih gelap */
+        border-color: #ff66b2;
+    }
+
+    .btn-danger {
+        background-color: #ff4da6; /* Tombol merah diganti pink cerah */
+        border-color: #ff4da6;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #e63995; /* Hover tombol merah menjadi lebih gelap */
+        border-color: #e63995;
+    }
+
+    .modal-header {
+        background-color: #ff4da6; /* Header modal warna pink */
+        color: white;
+    }
+
+    .modal-content .btn-primary {
+        background-color: #ff4da6; /* Tombol simpan dalam modal */
+        border-color: #ff4da6;
+        color: white;
+    }
+
+    .modal-content .btn-primary:hover {
+        background-color: #e63995;
+        border-color: #e63995;
+    }
+
+    footer {
+        background-color: #ff80bf; /* Footer warna pink terang */
+        color: #ffffff;
+    }
+
+    footer a {
+        color: #ffffff; /* Link di footer tetap putih */
+    }
+</style>
